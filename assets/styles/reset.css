@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+a{
+    text-decoration: none;
+    font-size: 20px;
+}
+///////////////////////////////////////*navbar*//////////////////////////////
+.nav_list {
+    display: flex;
+}
+li {
+    margin: 10px;
+    color: white;
+    /* background-color: yellow; */
+    padding: 10px;
+    border-radius: 5px;
+    list-style: none;
+    display: inline-block;
+}
+.navbar {
+    display: flex;
+}
+
+nav{
+    background-color: black;
+}
+li.but {
+    background-color: yellow;
+    border-radius: 10px;
+}
+
+label{
+    margin: 2px;
+}
+input{
+    margin: 2px;
+}
+form{
+    border: 2px solid black;
+    width: 20%;
+    padding: 10px;
+}
+.footer {
+    background-color: black;
+    margin-top: 200px;
+    padding-bottom: 100px;
+}
+.nav_footer {
+    display: flex;
+    justify-content: space-evenly;
+    color: red;
+    font-size: 20px;
+}
+.mention{
+    text-align: center;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+.main {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 150px;
+}
+.card {
+    width: 27%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+    /*margin-bottom: 5%;*/
+    margin: 20px;
+}
+.titre {
+    text-align: center;
+    text-decoration: #B0413E;
+    box-shadow: gray;
+}
+
+.event_title {
+    text-align: center;
+    background-color: yellow;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.soirée_title {
+    font-size: 20px;
+    color: #B0413E;
+    margin-top: 50px;
+}
+/*///////////////////////////////////////page accueil////////////////////////////*/
+section .intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid red;
+    width: 100vw;
+
+}
+.intro > div {
+    font-size: 60px;
+    font-family: Cambria;
+    text-align: center;
+    width: 50%;
+}
+.intro_accueil{
+    text-transform: uppercase;
+}
+.image_accueil {
+    background-size: cover;
+}
+

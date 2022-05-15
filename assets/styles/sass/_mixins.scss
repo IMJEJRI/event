@@ -1,0 +1,34 @@
+//$filePath: "../../fonts/";
+
+@mixin flex($just:center, $align: center, $dir: row, $wrap: nowrap) {
+    display: flex;
+    justify-content: $just;
+    align-items: $align;
+    flex-direction: $dir;
+    flex-wrap: $wrap;
+}
+
+@mixin background($filename, $pos, $size, $repeat) {
+    background-image: url('../../img/#{$filename}');
+    background-position: $pos;
+    background-size: $size;
+    @if ($repeat !=repeat) {
+        background-repeat: $repeat;
+    }
+}
+
+@mixin police($size,
+$fam: ('Verdana', sans serif),
+$weight: initial,
+$style:normal,
+$line: normal,
+$lSpace: normal,
+$maj:none) {
+    font-size: #{$size}px;
+    font-family: $fam;
+    font-weight: $weight;
+    font-style: $style;
+    line-height: $line;
+    letter-spacing: #{$lSpace}em;
+    text-transform: $maj;
+}
