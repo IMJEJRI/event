@@ -16,6 +16,10 @@ class EventType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // the add method accepts 3 parameters :
+        // the first is the name of the entity property
+        // the second one is the type of field
+        // the third is an array of options to pass to the form.
         $builder
             ->add('title')
             ->add('datetime')
@@ -27,7 +31,8 @@ class EventType extends AbstractType
                 'class' => Place::class
             ])
             ->add('imageFile', VichImageType::class, [
-                'required' => false
+                'required' => false,
+
             ])
             ->add('submit', SubmitType::class)
         ;

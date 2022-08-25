@@ -10,8 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: PlaceRepository::class)]
 class Place
 {
+    // Tells doctrine to watch this entity
     #[ORM\Id]
     #[ORM\GeneratedValue]
+    // describe the column in DB
     #[ORM\Column(type: 'integer')]
     private $id;
 

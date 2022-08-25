@@ -1,0 +1,76 @@
+{% extends 'base.html.twig'%}
+{# {% block body %}#}
+{#        <table class="table table_striped">#}
+{#            <thead class="tableau">#}
+{#            <th>Id</th>#}
+{#            <th>Genre</th>#}
+{#            <th>Evènement</th>#}
+{#            <th>Action</th>#}
+{#            </thead>#}
+{#            <tbody>#}
+{#            {% for kind in kinds %}#}
+{#            <tr class="StyleDash">#}
+{#                <td>#}
+{#                    {{ kind.id }}#}
+{#                </td>#}
+{#                <td>#}
+{#                    {{ kind.label }}#}
+{#                </td>#}
+{#                {% for event in kind.events %}#}
+{#                <td class="list--event">#}
+{#                    {{ event }}#}
+{#                </td>#}
+{#                {% endfor %}#}
+{#                <td class="crud">#}
+{#                        <a class="btn btn-success" href="{{ path('Kind_new')}}">Ajouter#}
+{#                        </a>#}
+{#                        <a class="btn btn-info" href="{{ path('Kind_edit', {id: kind.id })}}">Modifier#}
+{#                        </a>#}
+{#                        <a class="btn btn-danger" href="{{ path('kind_delete', {id: kind.id })}}">Suprimer#}
+{#                        </a>#}
+{#                </td>#}
+{#            </tr>#}
+{#            {% endfor %}#}
+{#            </tbody>#}
+{#        </table>#}
+{# {% endblock body %}#}
+
+
+
+{% block body %}
+    <div class="table-responsive text-nowrap table-sm users-table">
+        <table class="users-table table  table-hover">
+            <thead class="bg-info">
+            <th class="thead">ID</th>
+            <th class="thead">Genre</th>
+            <th class="thead">Evènements</th>
+            <th class="thead">Action</th>
+            </thead>
+            <tbody>
+            {% for kind in kinds %}
+                <tr>
+                    <td>
+                        {{ kind.id }}
+                    </td>
+                    <td>
+                        {{ kind.label }}
+                    </td>
+                    {% for event in kind.events %}
+                        <td class="list--event">
+                            {{ event }}
+                        </td>
+                    {% endfor %}
+                    <td class="crud">
+                        <a class="btn btn-success" href="{{ path('Kind_new')}}">Ajouter
+                        </a>
+                        <a class="btn btn-info" href="{{ path('Kind_edit', {id: kind.id })}}">Modifier
+                        </a>
+                        <a class="btn btn-danger" href="{{ path('kind_delete', {id: kind.id })}}">Suprimer
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{%endblock%}

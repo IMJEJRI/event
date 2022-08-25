@@ -12,4 +12,31 @@ class EventRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Event::class);
     }
+
+    public function findOneEventByIdWithKind($id)
+    {
+        $qb = $this->createQueryBuilder('event')
+            ->select('event')
+            ->leftJoin('event.kind', 'kind')
+            ->addSelect('kind')
+            ->where('event.id = :id')
+            ->setParameter('id', $id)
+            ->orderBy('event.datetime', 'DESC')
+        ;
+
+        $query = $qb->getQuery();
+        dd($query);
+        return $query->getOneOrNullResult();
+    }
+
+    public function findAllOrderByDate()
+    {
+        $qb = $this->createQueryBuilder('event')
+            ->select('event')
+            ->orderBy('event.datetime', 'DESC')
+        ;
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
 }

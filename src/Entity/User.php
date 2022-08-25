@@ -10,15 +10,21 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[UniqueEntity(fields: ['email'], message: "l'email que vous avez indiqué est utilisé déja")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
+    // describe the column in DB
     #[ORM\Column(type: 'integer')]
     private $id;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $firstName;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $lastName;
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private $email;
 
@@ -26,13 +32,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $roles = [];
 
     #[ORM\Column(type: 'string')]
+//    #[Assert\EqualTo('propertyPath'="confirm_password")]
     private $password;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $fristName;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $lastName;
+//    #[Assert\EqualTo('propertyPath'="password")]
+//     public $confirm_password;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Event::class, orphanRemoval: true)]
     private $events;
@@ -76,7 +79,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_EDITOR';
 
         return array_unique($roles);
     }
@@ -91,7 +94,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see PasswordAuthenticatedUserInterface
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -112,14 +115,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getFristName(): ?string
+    public function getFirstName(): ?string
     {
-        return $this->fristName;
+        return $this->firstName;
     }
 
-    public function setFristName(string $fristName): self
+    public function setFirstName(string $firstName): self
     {
-        $this->fristName = $fristName;
+        $this->firstName = $firstName;
 
         return $this;
     }

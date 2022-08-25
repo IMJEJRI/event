@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-// Indique à doctrine qu'il faut surveiller cette entité
+// Tells doctrine to watch this entity
 #[ORM\Entity(repositoryClass: EventRepository::class)]
 /**
  * @Vich\Uploadable
@@ -16,11 +16,18 @@ class Event
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
+    // describe the column in DB
     #[ORM\Column(type: 'integer')]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $title;
+
+    public function __toString(): string
+    {
+       return $this->getTitle();
+    }
+
 
     #[ORM\Column(type: 'datetime')]
     private $datetime;

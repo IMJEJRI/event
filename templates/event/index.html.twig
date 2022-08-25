@@ -2,13 +2,10 @@
 
 {% block body %}
     <div class="main_accueil">
-
-
         <div class="intro">
             <div class="intro_accueil">
-                Ici nous créons <br>
-
-                des moments éternels
+                <div class="item_accueil">Ici nous créons </div>
+                <div class="item_accueil">des moments éternels</div>
             </div>
             <div class="image_accueil">
                 <img src="{{ asset('img/photoaccueil.jpg') }}" alt="Image d'accueil">
@@ -21,70 +18,59 @@
                     <div class="title1">LES PROCHAINES SOIRÉES À BORDEAUX</div>
                     <div class="sous_title">Plus de soirées à Bordeaux dans l'agenda</div>
                 </div>
-
                 <div class="s_flex">
+                    {% for event in events | slice(0, 3) | sort((a,b)=>b.datetime < a.datetime) %}
                     <div>
                         <div class="section_image">
-                            <img src="{{ asset('img/famille.jpg') }}" alt="">
+                            <img src=" {{ vich_uploader_asset(event, 'imageFile') }}" alt=" image {{ event.title}}">
                         </div>
-                        <div class="item">Soirée famille organiser par Restaurant le tajinier</div>
+                        <div class="item">
+                            <h5> {{ event.title}} </h5>
+                            <p>Organisée par: {{ event.place.name }}</p>
+                            <p>Date: {{ event.datetime | date( "d-m-Y H:i")}}</p>
+                        </div>
                     </div>
-                    <div>
-                        <div class="section_image">
-                            <img src="{{ asset('img/ddj.png') }}" alt=""></div>
-                        <div class="item">Soirée Dance organiser par le stade Matmut</div>
-                    </div>
-                    <div>
-                        <div class="section_image">
-                            <img src="{{ asset('img/beach.jpg') }}" alt=""></div>
-                        <div class="item">Soirée Camping organiser par AquiAsso</div>
-                    </div>
+                   {% endfor %}
                 </div>
             </div>
         </section>
 
-        <div class="invitation">Connectez-vous ou s'inscrire pour publier votre propre soirée!</div>
-
-
-        <section class="contactez_nous">
-            <div class="contact">
-                CONTACTEZ-NOUS
+      <div class="invitation">Connectez-vous ou s'inscrire pour publier votre propre soirée!</div>
+      <section>
+        <div class="section">
+            <div class="big_title">
+                <div class="title1">QUELQUES SOIRÉES DE LA SEMAINE DERNIERE À BORDEAUX</div>
             </div>
-            <div class="contact_flex">
-                <div class="contact-info">
-                    Vous êtes professionnel ? Gérant d’un bar ou d’une discothèque ?
-                    Organisateur de festival ? Vous pouvez demander votre accès pro depuis
-                    la page profil de l’application. Recherchez votre établissement dans la barre
-                    de recherche, et remplissez le formulaire pour que notre équipe étudie votre
-                    demande de revendication d’établissement.
-                </div>
-                <div class="container_form">
-                    <form id="formulaire" /action_page.php">
-                        <label for="fname">Nom & prénom</label>
-                        <input type="text" id="fname" name="firstname" placeholder="Votre nom et prénom">
-
-                        <label for="sujet">Sujet</label>
-                        <input type="text" id="sujet" name="sujet" placeholder="L'objet de votre message">
-
-                        <label for="emailAddress">Email</label>
-                        <input id="emailAddress" type="email" name="email" placeholder="Votre email">
-
-
-                        <label for="subject">Message</label>
-                        <textarea id="subject" name="subject" placeholder="Votre message" style="height:200px"></textarea>
-
-                        <input id="submit" submit" value="Envoyer">
-                    </form>
-                </div>
+            <div class="s_flex">
+                {% for event in events | slice(-3) | sort((a,b)=>b.datetime < a.datetime) %}
+                    <div>
+                        <div class="section_image">
+                            <img src=" {{ vich_uploader_asset(event, 'imageFile') }}" alt=" image {{ event.title}}">
+                        </div>
+                        <div class="item">
+                            <h5> {{ event.title}} </h5>
+                            <p>Organisée par: {{ event.place.name }}</p>
+                            <p>Date: {{ event.datetime | date( "d-m-Y H:i")}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
+             <div class="contact-info">
+                    <p class="paragraphe_info">Trouve tes soirées à proximité</p>
+                    <p>Vous êtes professionnel ? Gérant d’un bar ou d’une discothèque ?
+                        Organisateur de festival ? Vous pouvez demander votre accès pro depuis
+                        la page profil de l’application. Recherchez votre établissement dans la barre
+                        de recherche, et remplissez le formulaire pour que notre équipe étudie votre
+                        demande de revendication d’établissement.</p>
+             </div>
 
-
-        <article class="partenaire_logo">
-            <div><img class="logo_part" src="{{ asset('img/office.png') }}" alt=""></div>
-            <div><img class="logo_part" src="{{ asset('img/bordeaux ma ville.png') }}" alt=""></div>
-            <div><img class="logo_part" src="{{ asset('img/la plage logo.png') }}" alt=""></div>
-            <div><img class="logo_part" src="{{ asset('img/bordeaux ma ville.png') }}" alt=""></div>
-            <div><img class="logo_part" src="{{ asset('img/office.png') }}" alt=""></div>
-        </article>
+          <article class="partenaire_logo">
+            <div><img class="logo_part" src="{{ asset('img/office.png') }}" alt="logo_Bordeaux ma ville"></div>
+            <div><img class="logo_part" src="{{ asset('img/bordeaux ma ville.png') }}" alt="logo_mairie"></div>
+            <div><img class="logo_part" src="{{ asset('img/la plage logo.png') }}" alt="logo_mairie_lacanau"></div>
+            <div><img class="logo_part" src="{{ asset('img/bordeaux ma ville.png') }}" alt="logo_Bordeaux_tourisme"></div>
+           </article>
+        </div>
+      </section>
     </div>
 {% endblock body %}

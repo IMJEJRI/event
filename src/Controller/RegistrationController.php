@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+//use, equivalent to the "require", represent all the classes which are used in the file.
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -33,10 +33,8 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
-
             return $this->redirectToRoute('event_listing');
         }
-
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);

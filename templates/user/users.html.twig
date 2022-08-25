@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue les utilisateurs{% endblock %}
+
+{#{% block body %}#}
+{#    <table class="table table-striped">#}
+{#        <thead>#}
+{#        <th>Id</th>#}
+{#        <th>e-mail</th>#}
+{#        <th>Roles</th>#}
+
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for user in users %}#}
+{#            <tr>#}
+{#                <td>#}
+{#                    {{ user.id }}#}
+{#                </td>#}
+{#                <td>#}
+{#                    {{ user.email }}#}
+{#                </td>#}
+{#                <td>#}
+{#                    {{ user.roles|join(', ') }}#}
+{#                </td>#}
+{#                <td class="text-end">#}
+{#                    <a class="btn btn-success" href="{{ path('user_toggle_role', {id: user.id, role: 'ROLE_ADMIN'}) }}">#}
+{#                        Changer le role admin</a>#}
+{#                    <a class="btn btn-info" href="{{ path('user_edit', {id: user.id}) }}"> Modifier</a>#}
+
+{#                    <a class="btn btn-danger" href="{{ path('user_delete', {id: user.id}) }}">Supprimer</a>#}
+{#                </td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+
+{#{% endblock %}#}
+
+
+
+{% block body %}
+    <div class="table-responsive text-nowrap table-sm users-table">
+        <table class="users-table table  table-hover">
+            <thead class="bg-info">
+            <th>Id</th>
+            <th>e-mail</th>
+            <th>Roles</th>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>
+                        {{ user.id }}
+                    </td>
+                    <td>
+                        {{ user.email }}
+                    </td>
+                    <td>
+                        {{ user.roles|join(', ') }}
+                    </td>
+                    <td class="text-end">
+                        <a class="btn btn-success" href="{{ path('user_toggle_role', {id: user.id, role: 'ROLE_ADMIN'}) }}">
+                            Changer le role admin</a>
+                        <a class="btn btn-info" href="{{ path('user_edit', {id: user.id}) }}"> Modifier</a>
+
+                        <a class="btn btn-danger" href="{{ path('user_delete', {id: user.id}) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{%endblock%}

@@ -4,31 +4,30 @@
     <div class="big_main">
     <h1 class="title">LES SOIRÉES À BORDEAUX</h1>
         <h3>L'agenda des soirées à Bordeaux pour vos sorties la nuit.</h3>
-        {% if is_granted('ROLE_ADMIN') %}
-            <a class="event_title" href="{{ path('event_new') }}">Créer un évènement</a>
+        {% if is_granted('ROLE_EDITOR') %}
+            <div class="button_event"><a class="event_title" href="{{ path('event_new') }}">Créer un évènement</a></div>
         {% endif %}
-
-
     <div class="main">
         {% for event in events %}
         <div class="card">
-            <img src="{{ vich_uploader_asset(event, 'imageFile') }}" class="image" alt="images des soirées" width="200" height="auto">
-
+            <img src="{{ vich_uploader_asset(event, 'imageFile') }}" class="image" alt="image {{ event.title}}" width="200" height="auto">
             <p class="soirée_title">{{ event.title }}</p>
-            <p> Organisée par : {{ event.place.name }}</p>
-            <p> Date: {{ event.datetime|date( "Y-m-d H:i:s") }}</p>
-            <p> Adresse : {{ event.place.way}}</p>
-            <p> {{ event.place.postCode }} {{ event.place.city}}</p>
-            <p>Evenement créé par {{ event.user.email }}</p>
-
-            {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('event_edit', {id: event.id}) }}">Modifier l'évènement</a>
-                <a href="{{ path('event_delete', {id: event.id}) }}">Supprimer l'évènement</a>
+            <p class="organization_event"> Organisée par : {{ event.place.name }}</p>
+            <p class="date_event"> Date: {{ event.datetime|date( "d-m-Y H:i") }}</p>
+            <p class="address_event"> Adresse : {{ event.place.way}}</p>
+            <p class="place_event"> {{ event.place.postCode }} {{ event.place.city}}</p>
+            {% if is_granted('ROLE_ADMIN')%}
+                <a class="modif_event" href="{{ path('event_edit', {id: event.id}) }}">Modifier l'évènement</a>
+                <a class="modif_event" href="{{ path('event_delete', {id: event.id}) }}">Supprimer l'évènement</a>
+            {% else %}
+                {% if is_granted('ROLE_EDITOR') and app.user.id == event.user.id %}
+                    <a class="modif_event" href="{{ path('event_edit', {id: event.id}) }}">Modifier l'évènement</a>
+                    <a class="modif_event" href="{{ path('event_delete', {id: event.id}) }}">Supprimer l'évènement</a>
+                {% endif %}
             {% endif %}
+
         </div>
             {% endfor %}
-
     </div>
     </div>
-
 {% endblock body %}

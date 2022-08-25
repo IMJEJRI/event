@@ -10,8 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: KindRepository::class)]
 class Kind
 {
+    // Tells doctrine to watch this entity
     #[ORM\Id]
     #[ORM\GeneratedValue]
+    // describe the column in DB
     #[ORM\Column(type: 'integer')]
     private $id;
 
@@ -25,6 +27,7 @@ class Kind
     {
         return $this->getLabel();
     }
+
     public function __construct()
     {
         $this->events = new ArrayCollection();

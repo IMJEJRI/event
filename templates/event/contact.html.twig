@@ -1,58 +1,67 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<div class="background_image" style="background-image: url('{{asset('img/miroir.jpg')}}')">
-    <p class="partenaires">Soyez notifiés des évènements dans la journée et préparez vous à faire la fête.
+    <div class="background_image" style="background-image: url('{{ asset('img/miroir.jpg') }}')">
+        <p class="partenaires">Soyez notifiés des évènements dans la journée et préparez vous à faire la fête.
         </p>
-</div>
+    </div>
 
-<div class="partner_desription">
-    <h1>Nos Prtenaires</h1>
-    <div> Vous êtes gérant d’établissement ? Grâce à notre application application administrez votre page et ajouter vos
-        soirées pour informer de potentiels futurs clients.</div>
-</div>
+    <div class="partner_desription">
+        Nos Partenaires
+{#        <div> Vous êtes gérant d’établissement ? Grâce à notre application application administrez votre page et ajouter#}
+{#            vos#}
+{#            soirées pour informer de potentiels futurs clients.#}
+{#        </div>#}
+    </div>
     <article class="coworkers">
         <div class="diapo">
             <div class="elements">
                 <div class="element">
                     <img src="{{ asset('img/base.jpg') }}" alt="Photo_The Base">
                     <div class="caption">
-                        <h4>The Base</h4>
                     </div>
                 </div>
                 <div class="element">
                     <img src="{{ asset('img/partenaire 1.png') }}" alt="Photo_La Plage">
                     <div class="caption">
-                        <h4>La Plage</h4>
                     </div>
                 </div>
                 <div class="element">
                     <img src="{{ asset('img/partenaire 2.png') }}" alt="Photo_Christelle">
                     <div class="caption">
-                        <h4>Christelle LAGOUARDE</h4>
                     </div>
                 </div>
                 <div class="element">
                     <img src="{{ asset('img/partenaire 3.png') }}" alt="Photo_Christelle">
                     <div class="caption">
-                        <h4>Christelle LAGOUARDE</h4>
                     </div>
                 </div>
                 <div class="element">
                     <img src="{{ asset('img/partenaire 4.png') }}" alt="Photo_Christelle">
                     <div class="caption">
-                        <h4>Christelle LAGOUARDE</h4>
                     </div>
                 </div>
                 <div class="element">
                     <img src="{{ asset('img/partenaire 5.png') }}" alt="Photo_Christelle">
                     <div class="caption">
-                        <h4>Christelle LAGOUARDE</h4>
+
                     </div>
                 </div>
             </div>
             <i id="nav-gauche" class="fas fa-chevron-left"></i>
             <i id="nav-droite" class="fas fa-chevron-right"></i>
         </div>
+        <div>
+            Vous êtes gérant d’établissement ? Grâce à notre application application administrez votre page et ajouter
+          vos soirées pour informer de potentiels futurs clients.
+        </div>
+    </article>
+
+    <article class="partenaire_logo">
+        <div><img class="logo_part" src="{{ asset('img/office.png') }}" alt=""></div>
+        <div><img class="logo_part" src="{{ asset('img/bordeaux ma ville.png') }}" alt=""></div>
+        <div><img class="logo_part" src="{{ asset('img/la plage logo.png') }}" alt=""></div>
+        <div><img class="logo_part" src="{{ asset('img/bordeaux ma ville.png') }}" alt=""></div>
+{#        <div><img class="logo_part" src="{{ asset('img/office.png') }}" alt=""></div>#}
     </article>
 
 {% endblock body %}
